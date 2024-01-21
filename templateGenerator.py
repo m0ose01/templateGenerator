@@ -62,7 +62,8 @@ def main():
         write_images(pdf_path = input_pdf, images_path = images_dir, images_pattern =  images_pattern)
 
     if create_template:
-        md_text = write_template_text(title = "Insert Title", num_pages = num_pages, images_pattern = images_pattern, images_dir = images_dir)
+        title = input_pdf.stem
+        md_text = write_template_text(title = title, num_pages = num_pages, images_pattern = images_pattern, images_dir = images_dir)
         with open(output_dir / "template.md", "w") as template:
             template.writelines(md_text)
             template.close
