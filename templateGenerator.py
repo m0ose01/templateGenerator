@@ -13,9 +13,20 @@ def get_num_pages(pdf_path):
         return num_pages
     
 def write_template_text(title, num_pages, images_dir, images_pattern):
-    template_text = [f"# {title} \n\n"]
+    template_text = [
+        f"# {title}",
+        f"\n",
+    ]
+    template_text = ['\n'.join(template_text)]
     for i in range(num_pages):
-        template_text.append(f"## Slide {i}\n\n![Slide {i}]({images_dir}/{images_pattern}{i}.jpg)\n\n* \n\n")
+        slide_text = [
+        f"## Slide {i} {{.slide}}",
+        f"![Slide {i}]({images_dir}/{images_pattern}{i}.jpg)",
+        f"* " ,
+        "",
+        ]
+        slide_text = '\n\n'.join(slide_text)
+        template_text.append(slide_text)
     return template_text
 
 def write_images(pdf_path, images_path, images_pattern):
