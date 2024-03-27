@@ -2,3 +2,4 @@ slides/
 template.md
 template.html
 *.pdf
+.venv/
